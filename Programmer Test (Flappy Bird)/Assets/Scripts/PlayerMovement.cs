@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!isDead)
         {
-            //using  ouse input for test circiumstances to begin with
+            //using mouse input for test circiumstances to begin with
             if (Input.GetMouseButtonDown(0))
             {
                 //anim.SetTrigger("");
@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         isDead = true;
 
+        GameControl.instance.Died();
 
 
     }
