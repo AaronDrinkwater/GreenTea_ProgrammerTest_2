@@ -6,20 +6,25 @@ public class PipePooling : MonoBehaviour
 {
     public GameObject pipePrefab;
     private GameObject[] pipes;
+    public Transform pipeTransform;
 
-    public int pipePoolingSize = 5;
+    public int pipePoolingSize = 15;
     private int currentPipe = 0;
+    private int maxNumOfPipes = 100;
 
     private float spawnTimer;
-    public float spawnRate = 15f;
+    public float spawnRate = 5f;
     public float pipeMin = -1f;
     public float pipeMax = 3.5f;
     //private float spawnZPos = 10f;
     //private float spawnXPos = 10f;
 
+    public float spawnXPosition = 0;
+    public float spawnZPosition = 5;
+
     private float test = 10f;
 
-    private Vector3 objectPoolingPosition = new Vector3(-15f, -25f,-15f);
+    private Vector3 objectPoolingPosition = new Vector3(-20f, -25f,-20f);
 
     void Start()
     {
@@ -28,6 +33,7 @@ public class PipePooling : MonoBehaviour
         for (int i = 0; i < pipePoolingSize; i++)
         {
             pipes[i] = GameObject.Instantiate(pipePrefab, objectPoolingPosition, Quaternion.identity);
+            //pipes[i] = GameObject.Instantiate(pipePrefab, objectPoolingPosition + pipeTransform.position, Quaternion.identity);
         }
     }
 
@@ -39,9 +45,8 @@ public class PipePooling : MonoBehaviour
         {
             spawnTimer = 0;
             float spawnYPosition = Random.Range(pipeMin, pipeMax);
-            float spawnXPosition = 1.7f;
-            float spawnZPosition = -3.0f;
-            pipes[currentPipe].transform.position = new Vector3(0, spawnYPosition, 0);
+
+            pipes[currentPipe].transform.position = new Vector3(spawnXPosition, spawnYPosition, spawnZPosition++);
             currentPipe++;
 
             if(currentPipe >= pipePoolingSize)
@@ -49,5 +54,10 @@ public class PipePooling : MonoBehaviour
                 currentPipe = 0;
             }
         }
+    }
+
+    Vector3 GeneratePipesPosition()
+    {
+        return new Vector3(0, 0, 0);
     }
 }
