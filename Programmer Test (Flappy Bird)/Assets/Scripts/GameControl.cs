@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
     public static GameControl instance;
-
+    public Text currentScore;
     public GameObject gameoverText;
     public bool isGameOver = false;
     public float scrollSpeed = -1.5f;
+    private int score = 0;
 
     void Awake()
     {
@@ -35,5 +37,18 @@ public class GameControl : MonoBehaviour
     {
         gameoverText.SetActive(true);
         isGameOver = true;
+    }
+
+    public void ScoreUp()
+    {
+        if(isGameOver)
+        {
+            return;
+        }
+        else 
+        {
+            score++;
+            currentScore.text = "Score: " + score.ToString();
+        }
     }
 }

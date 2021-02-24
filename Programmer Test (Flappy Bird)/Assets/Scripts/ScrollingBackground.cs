@@ -6,7 +6,7 @@ public class ScrollingBackground : MonoBehaviour
 {
     private BoxCollider groundCollider;
     private float groundLength;
-    private float offset = 20f;
+    private float offset = 18f;
     void Start()
     {
         groundCollider = GetComponent<BoxCollider>();

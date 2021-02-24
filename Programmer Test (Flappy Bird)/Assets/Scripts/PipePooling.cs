@@ -1,0 +1,53 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PipePooling : MonoBehaviour
+{
+    public GameObject pipePrefab;
+    private GameObject[] pipes;
+
+    public int pipePoolingSize = 5;
+    private int currentPipe = 0;
+
+    private float spawnTimer;
+    public float spawnRate = 15f;
+    public float pipeMin = -1f;
+    public float pipeMax = 3.5f;
+    //private float spawnZPos = 10f;
+    //private float spawnXPos = 10f;
+
+    private float test = 10f;
+
+    private Vector3 objectPoolingPosition = new Vector3(-15f, -25f,-15f);
+
+    void Start()
+    {
+        pipes = new GameObject[pipePoolingSize];
+
+        for (int i = 0; i < pipePoolingSize; i++)
+        {
+            pipes[i] = GameObject.Instantiate(pipePrefab, objectPoolingPosition, Quaternion.identity);
+        }
+    }
+
+    void Update()
+    {
+        spawnTimer += Time.deltaTime;
+
+        if(GameControl.instance.isGameOver == false && spawnTimer >= spawnRate)
+        {
+            spawnTimer = 0;
+            float spawnYPosition = Random.Range(pipeMin, pipeMax);
+            float spawnXPosition = 1.7f;
+            float spawnZPosition = -3.0f;
+            pipes[currentPipe].transform.position = new Vector3(0, spawnYPosition, 0);
+            currentPipe++;
+
+            if(currentPipe >= pipePoolingSize)
+            {
+                currentPipe = 0;
+            }
+        }
+    }
+}
