@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     public float upwardsForce;
+    public float moveFoward;
     private bool isDead = false;
     void Start()
     {
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
                 rb.velocity = Vector3.zero;
 
-                rb.AddForce(new Vector3(0, upwardsForce, 0));
+                rb.AddForce(new Vector3(0, upwardsForce, moveFoward));
             }
 
         }
