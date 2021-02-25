@@ -9,9 +9,11 @@ public class GameControl : MonoBehaviour
     public static GameControl instance;
     public Text currentScore;
     public GameObject gameoverText;
+
     public bool isGameOver = false;
     public float scrollSpeed = -1.5f;
     private int score = 0;
+    public float time = 0.0f;
 
     void Awake()
     {
@@ -27,9 +29,15 @@ public class GameControl : MonoBehaviour
 
     void Update()
     {
-        if(isGameOver && Input.GetMouseButtonDown(0))
+        if (isGameOver)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            time += Time.deltaTime;
+
+            if (time >= 1.0f && Input.GetMouseButtonDown(0))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                time = 0;
+            }
         }
     }
 

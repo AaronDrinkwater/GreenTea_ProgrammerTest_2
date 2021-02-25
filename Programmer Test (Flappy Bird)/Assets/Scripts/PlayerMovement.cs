@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
+    public AudioClip deathClip;
+    public AudioClip jumpClip;
+    public AudioClip floorClip;
+    AudioSource audio;
+    public float volume;
+
     private Animator anim;
+
     private Rigidbody rb;
 
     public float upwardsForce;
@@ -12,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isDead = false;
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
@@ -28,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = Vector3.zero;
 
                 rb.AddForce(new Vector3(0, upwardsForce, moveFoward));
+
+                audio.PlayOneShot(jumpClip, volume);
             }
 
         }
@@ -41,6 +52,17 @@ public class PlayerMovement : MonoBehaviour
 
         GameControl.instance.Died();
 
+        if(collision.gameObject.tag == "Pipe")
+        {
+            audio.PlayOneShot(deathClip);
+        }
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Floor")
+        {
+            audio.PlayOneShot(floorClip, 0.15f);
+        }
     }
 }
