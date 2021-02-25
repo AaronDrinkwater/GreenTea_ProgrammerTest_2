@@ -46,7 +46,7 @@ public class PipePooling : MonoBehaviour
             spawnTimer = 0;
             float spawnYPosition = Random.Range(pipeMin, pipeMax);
 
-            pipes[currentPipe].transform.position = new Vector3(spawnXPosition, spawnYPosition, spawnZPosition++);
+            pipes[currentPipe].transform.position = new Vector3(spawnXPosition, spawnYPosition, 0);
             currentPipe++;
 
             if(currentPipe >= pipePoolingSize)
