@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip deathClip;
     public AudioClip jumpClip;
     public AudioClip floorClip;
-    AudioSource audio;
+    new AudioSource audio;
     public float volume;
 
     private Animator anim;
