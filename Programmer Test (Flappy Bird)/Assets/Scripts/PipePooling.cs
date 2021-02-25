@@ -14,8 +14,8 @@ public class PipePooling : MonoBehaviour
 
     private float spawnTimer;
     public float spawnRate = 5f;
-    public float pipeMin = -1f;
-    public float pipeMax = 3.5f;
+    public float pipeMin = 1f;
+    public float pipeMax = 4f;
     //private float spawnZPos = 10f;
     //private float spawnXPos = 10f;
 
