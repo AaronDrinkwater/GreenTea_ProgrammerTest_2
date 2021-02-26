@@ -52,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
 
         GameControl.instance.Died();
 
+        GameControl.instance.EndScore();
+
         if(collision.gameObject.tag == "Pipe")
         {
             audio.PlayOneShot(deathClip);

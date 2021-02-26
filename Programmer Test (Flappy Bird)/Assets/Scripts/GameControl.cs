@@ -8,6 +8,7 @@ public class GameControl : MonoBehaviour
 {
     public static GameControl instance;
     public Text currentScore;
+    public Text gameOverScore;
     public GameObject gameoverText;
 
     public bool isGameOver = false;
@@ -57,6 +58,14 @@ public class GameControl : MonoBehaviour
         {
             score++;
             currentScore.text = "Score: " + score.ToString();
+        }
+    }
+
+    public void EndScore()
+    {
+        if(isGameOver)
+        {
+            gameOverScore.text = "Your Score: " + score.ToString();
         }
     }
 }
