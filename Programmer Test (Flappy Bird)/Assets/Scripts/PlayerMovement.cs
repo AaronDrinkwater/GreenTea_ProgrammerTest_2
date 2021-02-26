@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public float upwardsForce;
     public float moveFoward;
     private bool isDead = false;
+
+    public bool checkOnce = false;
     void Start()
     {
         audio = GetComponent<AudioSource>();
@@ -54,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
 
         GameControl.instance.EndScore();
 
+        GameControl.instance.ScoreUp();
+
         if(collision.gameObject.tag == "Pipe")
         {
             audio.PlayOneShot(deathClip);
@@ -62,9 +66,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Floor")
+        if (other.tag == "Floor" && !checkOnce)
         {
             audio.PlayOneShot(floorClip, 0.15f);
+
+            checkOnce = true;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        checkOnce = false;
+
+
     }
 }

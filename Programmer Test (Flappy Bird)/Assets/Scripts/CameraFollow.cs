@@ -35,11 +35,11 @@ public class CameraFollow : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, /*ray*/ out hit))
         {
-            if (hit.transform.tag == "Pipe")
+            if (hit.transform.tag == "Pipes")
             {
                 //cam.transform.position = Vector3.Lerp(transform.position, player.position + offset * cam.targetDisplay, transitionTime);
-                //transform.position = Vector3.SmoothDamp(transform.position, player.position - raycastOffset, ref vel, raycastSmoothTime);
-                transform.position = Vector3.SmoothDamp(transform.position, player.position, ref vel, raycastSmoothTime);
+                transform.position = Vector3.SmoothDamp(transform.position, player.position - raycastOffset, ref vel, raycastSmoothTime);
+                //transform.position = Vector3.SmoothDamp(transform.position, player.position, ref vel, raycastSmoothTime);
             }
 
             Debug.Log(hit.collider.tag);

@@ -52,7 +52,7 @@ public class GameControl : MonoBehaviour
     {
         if(isGameOver)
         {
-            return;
+            currentScore.enabled = false;
         }
         else 
         {
