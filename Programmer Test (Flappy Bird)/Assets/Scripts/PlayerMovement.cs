@@ -44,6 +44,11 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(new Vector3(0, upwardsForce, moveFoward));
 
                 audio.PlayOneShot(jumpClip, volume);
+
+                if(transform.position.y > 6.8f)
+                {
+                    rb.AddForce(new Vector3(0, -upwardsForce, -moveFoward));
+                }
             }
 
         }
