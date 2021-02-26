@@ -14,10 +14,13 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
 
     private Rigidbody rb;
+    Vector3 savedVelocity;
+    Vector3 savedAngularVelocity;
 
     public float upwardsForce;
     public float moveFoward;
     private bool isDead = false;
+ 
 
     public bool checkOnce = false;
     void Start()
@@ -44,6 +47,17 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
+    }
+
+    public void OnPauseGame()
+    {
+        rb.isKinematic = true;
+        savedVelocity = rb.velocity;
+        savedVelocity = Vector3.zero;
+        //isDead = true;
+        //rb.sleepThreshold = 0;
+        //Destroy(gameObject);
+        //Destroy(GetComponent<Rigidbody>());
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -77,7 +91,5 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         checkOnce = false;
-
-
     }
 }
