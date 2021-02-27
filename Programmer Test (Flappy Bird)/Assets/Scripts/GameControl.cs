@@ -16,6 +16,13 @@ public class GameControl : MonoBehaviour
     private int score = 0;
     public float time = 0.0f;
 
+    public GameObject playerObject;
+    public GameObject floorObject;
+
+    private int objs = 4;
+    public GameObject[] disableObjects;
+    public GameObject disablePrefab;
+
     void Awake()
     {
         if(instance == null)
@@ -30,9 +37,20 @@ public class GameControl : MonoBehaviour
 
     void Update()
     {
+        disablePrefab.SetActive(true);
+
         if (isGameOver)
         {
             time += Time.deltaTime;
+
+            if(time >= 1.0f)
+            {
+                for (int i = 0; i < objs; i++)
+                {
+                    disableObjects[i].SetActive(false);
+                }
+
+            }
 
             if (time >= 1.0f && Input.GetMouseButtonDown(0))
             {
