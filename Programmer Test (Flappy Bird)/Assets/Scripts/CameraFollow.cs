@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
     public float smoothTime;
     public float raycastSmoothTime;
     private Vector3 lastPosition;
-    private float transitionTime = 1.0f;
+    //private float transitionTime = 1.0f;
     void Start()
     {
         cam = GetComponent<Camera>();

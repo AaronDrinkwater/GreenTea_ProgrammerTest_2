@@ -11,7 +11,7 @@ public class PipePooling : MonoBehaviour
 
     public int pipePoolingSize = 15;
     private int currentPipe = 0;
-    private int maxNumOfPipes = 100;
+    //private int maxNumOfPipes = 100;
 
     private float spawnTimer;
     public float spawnRate = 5f;
@@ -23,7 +23,6 @@ public class PipePooling : MonoBehaviour
     public float spawnXPosition = 0;
     public float spawnZPosition = 5;
 
-    private float test = 10f;
 
     private Vector3 objectPoolingPosition = new Vector3(-20f, -25f,-20f);
 

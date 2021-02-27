@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pipe : MonoBehaviour
 {
     public AudioClip audioClip;
-    AudioSource audio;
+    new AudioSource audio;
     public bool alreadyPlayed = false;
 
     private void Awake()
