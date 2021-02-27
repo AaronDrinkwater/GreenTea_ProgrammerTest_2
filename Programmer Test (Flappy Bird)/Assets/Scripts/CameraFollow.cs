@@ -42,14 +42,14 @@ public class CameraFollow : MonoBehaviour
                 //transform.position = Vector3.SmoothDamp(transform.position, player.position, ref vel, raycastSmoothTime);
             }
 
-            Debug.Log(hit.collider.tag);
+            //Debug.Log(hit.collider.tag);
 
             //Vector3 raycastDir = transform.position - player.transform.position;
             //Debug.DrawRay(player.position, raycastDir, Color.black);
             //print("I'm looking at " + hit.transform.name);
         }
-        else
+        //else
 
-            print("I'm looking at nothing!");
+            //print("I'm looking at nothing!");
     }
 }

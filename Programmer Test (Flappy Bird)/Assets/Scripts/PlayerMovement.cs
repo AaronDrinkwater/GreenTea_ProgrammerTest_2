@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Android;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
  
 
     public bool checkOnce = false;
+
+    //Touch touch;
     void Start()
     {
         audio = GetComponent<AudioSource>();
@@ -35,8 +39,11 @@ public class PlayerMovement : MonoBehaviour
         if(!isDead)
         {
             //using mouse input for test circiumstances to begin with
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
+
+                //Debug.Log("I have touched: " + Camera.main.ScreenToWorldPoint(touch.position));
+
                 //anim.SetTrigger("");
 
                 rb.velocity = Vector3.zero;
