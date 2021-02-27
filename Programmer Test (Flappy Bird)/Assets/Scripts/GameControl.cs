@@ -21,7 +21,6 @@ public class GameControl : MonoBehaviour
 
     private int objs = 4;
     public GameObject[] disableObjects;
-    public GameObject disablePrefab;
 
     void Awake()
     {
@@ -37,8 +36,7 @@ public class GameControl : MonoBehaviour
 
     void Update()
     {
-        disablePrefab.SetActive(true);
-
+       
         if (isGameOver)
         {
             time += Time.deltaTime;

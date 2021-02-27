@@ -4,17 +4,32 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
- 
-    void Start()
-    {
-        
-    }
-
+    public int time;
+    public GameObject self;
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerMovement>() != null)
         {
+            //StartCoroutine(Disabled());
             GameControl.instance.ScoreUp();
+            //StartCoroutine(Disabled());
         }
+
+        //Disabled();
     }
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.GetComponent<PlayerMovement>() != null)
+    //    {
+    //        //StartCoroutine(Disabled());
+    //    }
+    //}
+
+    //IEnumerator Disabled()
+    //{
+    //    self.SetActive(false);
+    //    yield return new WaitForSeconds(time);
+    //    self.SetActive(true);
+    //}
 }

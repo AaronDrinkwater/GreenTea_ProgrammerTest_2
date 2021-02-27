@@ -8,6 +8,7 @@ public class PipePooling : MonoBehaviour
     private GameObject[] pipes;
     public Transform pipeTransform;
 
+
     public int pipePoolingSize = 15;
     private int currentPipe = 0;
     private int maxNumOfPipes = 100;
@@ -31,9 +32,10 @@ public class PipePooling : MonoBehaviour
         pipes = new GameObject[pipePoolingSize];
 
         for (int i = 0; i < pipePoolingSize; i++)
-        {
+        { 
             pipes[i] = GameObject.Instantiate(pipePrefab, objectPoolingPosition, Quaternion.identity);
             //pipes[i] = GameObject.Instantiate(pipePrefab, objectPoolingPosition + pipeTransform.position, Quaternion.identity);
+            pipes[i].SetActive(true);
         }
     }
 
@@ -52,6 +54,14 @@ public class PipePooling : MonoBehaviour
             if(currentPipe >= pipePoolingSize)
             {
                 currentPipe = 0;
+            }
+        }
+
+        if(GameControl.instance.isGameOver)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                pipes[i].SetActive(false);
             }
         }
     }
